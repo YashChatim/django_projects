@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+{{ current_post.title }}
+{% endblock %}
+
+{% block page_content %}
+{% include 'blog/includes/post.html' with current_post=current_post key=key %}
+{% endblock %}

@@ -1,32 +1,46 @@
 from django.http import Http404
 from django.shortcuts import render
 
-all_blogs = {
-    1: 'Blog 1',
-    2: 'Blog 2',
-    3: 'Blog 3',
-    4: 'Blog 4',
-    5: 'Blog 5',
+all_posts = {
+    1: {
+        'title': 'Title 1',
+        'description': 'Description 1'
+    },
+    2: {
+        'title': 'Title 2',
+        'description': 'Description 2'
+    },
+    3: {
+        'title': 'Title 3',
+        'description': 'Description 3'
+    },
+    4: {
+        'title': 'Title 4',
+        'description': 'Description 4'
+    },
+    5: {
+        'title': 'Title 5',
+        'description': 'Description 5'
+    },
 }
 
 # Create your views here.
-def get_blogs_index(request):
+def get_blog_index(request):
     return render(request, 'blog/index.html', {
-        'title': 'Blogs Landing Page',
+        'title': 'Blog Landing Page',
     })
 
-def get_all_blogs(request):
-    return render(request, 'blog/blogs.html', {
-        'all_blogs': all_blogs,
-        'title': 'All Blogs',
+def get_all_posts(request):
+    return render(request, 'blog/all-posts.html', {
+        'all_posts': all_posts,
+        'title': 'All Posts',
     })
 
-def get_blog_id(request, blog_id):
+def get_post_detail(request, post_id):
     try:
-        current_blog = all_blogs[blog_id]
-        return render(request, 'blog/blog.html', {
-            'current_blog': current_blog,
-            'title': f'Blog {current_blog}'
+        current_post = all_posts[post_id]
+        return render(request, 'blog/post-detail.html', {
+            'current_post': current_post,
         })
     except:
         raise Http404()

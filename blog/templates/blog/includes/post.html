@@ -1,0 +1,19 @@
+{% load static %}
+
+<li>
+    <article class="post">
+        <img src="{% static '/blog/images/vegeta.jpg' %}" alt="Image" />
+        <div class="post_content">
+            {% if key %}
+            <h3>
+                <a href="{% url 'post-detail' key %}">
+                    {{ current_post.title }}
+                </a>
+            </h3>
+            {% else %}
+            <h3>{{ current_post.title }}</h3>
+            {% endif %}
+            <p>Description {{ current_post.description }}</p>
+        </div>
+    </article>
+</li>
